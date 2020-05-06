@@ -1,3 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from KNN import createDataSet
+import operator
+
 def kNN_classify(k,dis,X_train,x_train,Y_test):
     assert dis == 'E' or dis == 'M', 'dis must E or M，E代表欧拉距离，M代表曼哈顿距离'
     num_test = Y_test.shape[0]  #测试样本的数量
