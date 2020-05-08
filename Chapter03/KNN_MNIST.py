@@ -38,7 +38,7 @@ train_loader = torch.utils.data.DataLoader(dataset = train_dataset,
 test_loader = torch.utils.data.DataLoader(dataset = test_dataset,
                                           batch_size = batch_size,
                                           shuffle = True)
-
+print("---")
 X_train = train_loader.dataset.train_data.numpy() #需要转为numpy矩阵
 X_train = X_train.reshape(X_train.shape[0],28*28)#需要reshape之后才能放入knn分类器
 y_train = train_loader.dataset.train_labels.numpy()
@@ -53,15 +53,16 @@ print('Got %d / %d correct => accuracy: %f' % (num_correct, num_test, accuracy))
 
 
 
-X_train = train_loader.dataset.train_data.numpy()
-mean_image = getXmean(X_train)
-X_train = centralized(X_train,mean_image)
-y_train = train_loader.dataset.train_labels.numpy()
-X_test = test_loader.dataset.test_data[:1000].numpy()
-X_test = centralized(X_test,mean_image)
-y_test = test_loader.dataset.test_labels[:1000].numpy()
-num_test = y_test.shape[0]
-y_test_pred = kNN_classify(5, 'M', X_train, y_train, X_test)
-num_correct = np.sum(y_test_pred == y_test)
-accuracy = float(num_correct) / num_test
-print('Got %d / %d correct => accuracy: %f' % (num_correct, num_test, accuracy))
+# X_train = train_loader.dataset.train_data.numpy()
+# mean_image = getXmean(X_train)
+# X_train = centralized(X_train,mean_image)
+# y_train = train_loader.dataset.train_labels.numpy()
+#
+# X_test = test_loader.dataset.test_data[:1000].numpy()
+# X_test = centralized(X_test,mean_image)
+# y_test = test_loader.dataset.test_labels[:1000].numpy()
+# num_test = y_test.shape[0]
+# y_test_pred = kNN_classify(5, 'M', X_train, y_train, X_test)
+# num_correct = np.sum(y_test_pred == y_test)
+# accuracy = float(num_correct) / num_test
+# print('Got %d / %d correct => accuracy: %f' % (num_correct, num_test, accuracy))
